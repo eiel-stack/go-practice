@@ -133,10 +133,10 @@ func main() {
 
 	// createEntity(db)
 
-	// queryEntity(db)
+	queryEntity(db)
 
 	//updateEntity(db)
 
-	deleteEntity(db)
+	// deleteEntity(db)
 
 }
