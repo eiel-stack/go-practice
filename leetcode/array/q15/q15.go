@@ -2,12 +2,14 @@ package main
 
 import (
 	"fmt"
+	"slices"
 	"sort"
 )
 
 func threeSum(nums []int) [][]int {
 	var result [][]int
 	sort.Ints(nums)
+	slices.Sort(nums)
 	n := len(nums)
 	for i := 0; i < n-2; i++ {
 		// 跳过重复的第一个元素

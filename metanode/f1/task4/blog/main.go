@@ -35,8 +35,8 @@ func main() {
 	registerRoutes(r)
 
 	// 启动服务器
-	log.Println("Server is running on port :8080")
-	r.Run(":8080")
+	log.Println("Server is running on port :8083")
+	r.Run(":8083")
 }
 
 // 注册所有路由

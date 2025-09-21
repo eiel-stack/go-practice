@@ -47,7 +47,7 @@ func CreatePost(c *gin.Context) {
 // GetAllPosts 获取所有文章
 func GetAllPosts(c *gin.Context) {
 	var posts []models.Post
-	if err := config.GetDB().Find(&posts).Error; err != nil {
+	if err := config.GetDB().Preload("User").Preload("Comments").Preload("Comments.User").Find(&posts).Error; err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to fetch posts"})
 		return
 	}
