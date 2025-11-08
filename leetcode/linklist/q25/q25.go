@@ -8,35 +8,35 @@ type ListNode struct {
 }
 
 func reverseKGroup(head *ListNode, k int) *ListNode {
-	hair := &ListNode{Next: head}
-	pre := hair
+	dummy := &ListNode{Next: head}
+	prev := dummy
 
 	for head != nil {
-		tail := pre
+		tail := prev
 		for i := 0; i < k; i++ {
 			tail = tail.Next
 			if tail == nil {
-				return hair.Next
+				return dummy.Next
 			}
 		}
 		next := tail.Next
-		head, tail = myReverse(head, tail)
-		pre.Next = head
+		head, tail = groupReverse(head, tail)
+		prev.Next = head
 		tail.Next = next
-		pre = tail
+		prev = tail
 		head = tail.Next
 	}
-	return hair.Next
+	return dummy.Next
 }
 
-func myReverse(head, tail *ListNode) (*ListNode, *ListNode) {
+func groupReverse(head, tail *ListNode) (*ListNode, *ListNode) {
 	prev := tail.Next
-	p := head
+	curr := head
 	for prev != tail {
-		next := p.Next
-		p.Next = prev
-		prev = p
-		p = next
+		next := curr.Next
+		curr.Next = prev
+		prev = curr
+		curr = next
 	}
 	return tail, head
 }
